@@ -522,143 +522,143 @@ class EDAMultiAgentSystem:
 #     system, data = main()
 
 # Standalone Data Generator Function
-def generate_and_save_sample_data(dataset_type: str = "sales", output_dir: str = "data", n_samples: int = None) -> str:
-    """
-    Generate sample data and save it to CSV file
+# def generate_and_save_sample_data(dataset_type: str = "sales", output_dir: str = "data", n_samples: int = None) -> str:
+#     """
+#     Generate sample data and save it to CSV file
 
-    Args:
-        dataset_type: Type of sample dataset to generate ("sales" or "customer")
-        output_dir: Directory to save the CSV file
-        n_samples: Number of samples to generate (optional)
+#     Args:
+#         dataset_type: Type of sample dataset to generate ("sales" or "customer")
+#         output_dir: Directory to save the CSV file
+#         n_samples: Number of samples to generate (optional)
 
-    Returns:
-        Path to the saved CSV file
-    """
-    # Create output directory if it doesn't exist
-    os.makedirs(output_dir, exist_ok=True)
+#     Returns:
+#         Path to the saved CSV file
+#     """
+#     # Create output directory if it doesn't exist
+#     os.makedirs(output_dir, exist_ok=True)
 
-    # Set random seed for reproducibility
-    np.random.seed(42)
+#     # Set random seed for reproducibility
+#     np.random.seed(42)
 
-    if dataset_type == "sales":
-        n_samples = n_samples or 1000
+#     if dataset_type == "sales":
+#         n_samples = n_samples or 1000
 
-        print(f"🏪 Generating {n_samples} sales records...")
+#         print(f"🏪 Generating {n_samples} sales records...")
 
-        # Generate sales data
-        dates = pd.date_range('2023-01-01', periods=n_samples, freq='D')
-        products = ['Product_A', 'Product_B', 'Product_C', 'Product_D', 'Product_E']
-        regions = ['North', 'South', 'East', 'West', 'Central']
+#         # Generate sales data
+#         dates = pd.date_range('2023-01-01', periods=n_samples, freq='D')
+#         products = ['Product_A', 'Product_B', 'Product_C', 'Product_D', 'Product_E']
+#         regions = ['North', 'South', 'East', 'West', 'Central']
 
-        data = {
-            'Date': np.random.choice(dates, n_samples),
-            'Product': np.random.choice(products, n_samples),
-            'Region': np.random.choice(regions, n_samples),
-            'Sales_Amount': np.random.exponential(1000, n_samples) + np.random.normal(500, 200, n_samples),
-            'Quantity': np.random.poisson(10, n_samples) + 1,
-            'Customer_Age': np.random.normal(35, 12, n_samples).astype(int),
-            'Customer_Satisfaction': np.random.uniform(1, 5, n_samples),
-            'Marketing_Spend': np.random.exponential(200, n_samples),
-            'Seasonality_Factor': np.sin(np.arange(n_samples) * 2 * np.pi / 365) + 1
-        }
+#         data = {
+#             'Date': np.random.choice(dates, n_samples),
+#             'Product': np.random.choice(products, n_samples),
+#             'Region': np.random.choice(regions, n_samples),
+#             'Sales_Amount': np.random.exponential(1000, n_samples) + np.random.normal(500, 200, n_samples),
+#             'Quantity': np.random.poisson(10, n_samples) + 1,
+#             'Customer_Age': np.random.normal(35, 12, n_samples).astype(int),
+#             'Customer_Satisfaction': np.random.uniform(1, 5, n_samples),
+#             'Marketing_Spend': np.random.exponential(200, n_samples),
+#             'Seasonality_Factor': np.sin(np.arange(n_samples) * 2 * np.pi / 365) + 1
+#         }
 
-        # Add some missing values (5% of Customer_Satisfaction)
-        missing_indices = np.random.choice(n_samples, size=int(0.05 * n_samples), replace=False)
-        data['Customer_Satisfaction'][missing_indices] = np.nan
+#         # Add some missing values (5% of Customer_Satisfaction)
+#         missing_indices = np.random.choice(n_samples, size=int(0.05 * n_samples), replace=False)
+#         data['Customer_Satisfaction'][missing_indices] = np.nan
 
-        # Add some outliers (2% of Sales_Amount)
-        outlier_indices = np.random.choice(n_samples, size=int(0.02 * n_samples), replace=False)
-        data['Sales_Amount'][outlier_indices] *= 5
+#         # Add some outliers (2% of Sales_Amount)
+#         outlier_indices = np.random.choice(n_samples, size=int(0.02 * n_samples), replace=False)
+#         data['Sales_Amount'][outlier_indices] *= 5
 
-        filename = f"sales_data_{n_samples}_records.csv"
+#         filename = f"sales_data_{n_samples}_records.csv"
 
-    elif dataset_type == "customer":
-        n_samples = n_samples or 800
+#     elif dataset_type == "customer":
+#         n_samples = n_samples or 800
 
-        print(f"👥 Generating {n_samples} customer records...")
+#         print(f"👥 Generating {n_samples} customer records...")
 
-        data = {
-            'Customer_ID': range(1, n_samples + 1),
-            'Age': np.random.normal(40, 15, n_samples).astype(int),
-            'Income': np.random.lognormal(10, 0.5, n_samples),
-            'Education_Level': np.random.choice(['High School', 'Bachelor', 'Master', 'PhD'], n_samples),
-            'Years_Customer': np.random.exponential(3, n_samples),
-            'Total_Purchases': np.random.poisson(15, n_samples),
-            'Average_Order_Value': np.random.gamma(2, 50, n_samples),
-            'Churn_Risk': np.random.uniform(0, 1, n_samples),
-            'Satisfaction_Score': np.random.beta(2, 1, n_samples) * 5
-        }
+#         data = {
+#             'Customer_ID': range(1, n_samples + 1),
+#             'Age': np.random.normal(40, 15, n_samples).astype(int),
+#             'Income': np.random.lognormal(10, 0.5, n_samples),
+#             'Education_Level': np.random.choice(['High School', 'Bachelor', 'Master', 'PhD'], n_samples),
+#             'Years_Customer': np.random.exponential(3, n_samples),
+#             'Total_Purchases': np.random.poisson(15, n_samples),
+#             'Average_Order_Value': np.random.gamma(2, 50, n_samples),
+#             'Churn_Risk': np.random.uniform(0, 1, n_samples),
+#             'Satisfaction_Score': np.random.beta(2, 1, n_samples) * 5
+#         }
 
-        filename = f"customer_data_{n_samples}_records.csv"
+#         filename = f"customer_data_{n_samples}_records.csv"
 
-    else:
-        raise ValueError(f"Unsupported dataset type: {dataset_type}. Use 'sales' or 'customer'.")
+#     else:
+#         raise ValueError(f"Unsupported dataset type: {dataset_type}. Use 'sales' or 'customer'.")
 
-    # Create DataFrame
-    df = pd.DataFrame(data)
+#     # Create DataFrame
+#     df = pd.DataFrame(data)
 
-    # Save to CSV
-    output_path = os.path.join(output_dir, filename)
-    df.to_csv(output_path, index=False)
+#     # Save to CSV
+#     output_path = os.path.join(output_dir, filename)
+#     df.to_csv(output_path, index=False)
 
-    # Display summary information
-    print(f"✅ Dataset generated successfully!")
-    print(f"📁 Saved to: {output_path}")
-    print(f"📊 Shape: {df.shape}")
-    print(f"📋 Columns: {list(df.columns)}")
+#     # Display summary information
+#     print(f"✅ Dataset generated successfully!")
+#     print(f"📁 Saved to: {output_path}")
+#     print(f"📊 Shape: {df.shape}")
+#     print(f"📋 Columns: {list(df.columns)}")
 
-    # Display basic statistics
-    print(f"\n📈 Basic Statistics:")
-    print(f"   • Missing values: {df.isnull().sum().sum()}")
-    print(f"   • Duplicate rows: {df.duplicated().sum()}")
+#     # Display basic statistics
+#     print(f"\n📈 Basic Statistics:")
+#     print(f"   • Missing values: {df.isnull().sum().sum()}")
+#     print(f"   • Duplicate rows: {df.duplicated().sum()}")
 
-    if dataset_type == "sales":
-        print(f"   • Date range: {df['Date'].min()} to {df['Date'].max()}")
-        print(f"   • Products: {df['Product'].nunique()} unique")
-        print(f"   • Regions: {df['Region'].nunique()} unique")
-        print(f"   • Avg Sales Amount: ${df['Sales_Amount'].mean():.2f}")
-    elif dataset_type == "customer":
-        print(f"   • Age range: {df['Age'].min()} to {df['Age'].max()}")
-        print(f"   • Avg Income: ${df['Income'].mean():.2f}")
-        print(f"   • Education levels: {df['Education_Level'].nunique()} unique")
+#     if dataset_type == "sales":
+#         print(f"   • Date range: {df['Date'].min()} to {df['Date'].max()}")
+#         print(f"   • Products: {df['Product'].nunique()} unique")
+#         print(f"   • Regions: {df['Region'].nunique()} unique")
+#         print(f"   • Avg Sales Amount: ${df['Sales_Amount'].mean():.2f}")
+#     elif dataset_type == "customer":
+#         print(f"   • Age range: {df['Age'].min()} to {df['Age'].max()}")
+#         print(f"   • Avg Income: ${df['Income'].mean():.2f}")
+#         print(f"   • Education levels: {df['Education_Level'].nunique()} unique")
 
-    return output_path
+#     return output_path
 
-def generate_all_sample_datasets(output_dir: str = "data"):
-    """
-    Generate both sales and customer sample datasets
+# def generate_all_sample_datasets(output_dir: str = "data"):
+#     """
+#     Generate both sales and customer sample datasets
 
-    Args:
-        output_dir: Directory to save the CSV files
+#     Args:
+#         output_dir: Directory to save the CSV files
 
-    Returns:
-        List of paths to saved CSV files
-    """
-    print("🚀 **Sample Data Generator**")
-    print("=" * 50)
+#     Returns:
+#         List of paths to saved CSV files
+#     """
+#     print("🚀 **Sample Data Generator**")
+#     print("=" * 50)
 
-    saved_files = []
+#     saved_files = []
 
-    # Generate sales dataset
-    print("\n1️⃣ Generating Sales Dataset...")
-    sales_path = generate_and_save_sample_data("sales", output_dir, 1000)
-    saved_files.append(sales_path)
+#     # Generate sales dataset
+#     print("\n1️⃣ Generating Sales Dataset...")
+#     sales_path = generate_and_save_sample_data("sales", output_dir, 1000)
+#     saved_files.append(sales_path)
 
-    print("\n" + "-" * 50)
+#     print("\n" + "-" * 50)
 
-    # Generate customer dataset
-    print("\n2️⃣ Generating Customer Dataset...")
-    customer_path = generate_and_save_sample_data("customer", output_dir, 800)
-    saved_files.append(customer_path)
+#     # Generate customer dataset
+#     print("\n2️⃣ Generating Customer Dataset...")
+#     customer_path = generate_and_save_sample_data("customer", output_dir, 800)
+#     saved_files.append(customer_path)
 
-    print("\n" + "=" * 50)
-    print("🎉 **All datasets generated successfully!**")
-    print(f"📂 Files saved in: {output_dir}/")
-    for file_path in saved_files:
-        print(f"   • {os.path.basename(file_path)}")
+#     print("\n" + "=" * 50)
+#     print("🎉 **All datasets generated successfully!**")
+#     print(f"📂 Files saved in: {output_dir}/")
+#     for file_path in saved_files:
+#         print(f"   • {os.path.basename(file_path)}")
 
-    return saved_files
+#     return saved_files
 
-if __name__ == "__main__":
-    # Generate all sample datasets
-    generate_all_sample_datasets()
+# if __name__ == "__main__":
+#     # Generate all sample datasets
+#     generate_all_sample_datasets()
