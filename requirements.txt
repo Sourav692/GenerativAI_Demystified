@@ -1,0 +1,15 @@
+langchain
+python-dotenv
+langchain-openai
+langchain-core
+langchain-community
+bs4
+faiss-cpu
+pypdf
+arxiv
+pymupdf
+wikipedia
+lxml
+langchain_huggingface
+openai==1.57.0
+google-generativeai==0.8.3
