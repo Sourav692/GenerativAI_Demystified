@@ -1,15 +1,82 @@
-langchain
-python-dotenv
-langchain-openai
-langchain-core
-langchain-community
-bs4
-faiss-cpu
-pypdf
-arxiv
-pymupdf
-wikipedia
-lxml
-langchain_huggingface
-openai==1.57.0
-google-generativeai==0.8.3
+# =============================================================================
+# GENERATIVE AI & LANGCHAIN REQUIREMENTS
+# =============================================================================
+# This file contains all dependencies needed for the GenerativeAI_Demystified project
+# Includes libraries for LangChain, LLMs, document processing, and AI agents
+
+# =============================================================================
+# CORE LANGCHAIN FRAMEWORK
+# =============================================================================
+# Main LangChain framework and core components
+langchain                    # Core LangChain framework for building LLM applications
+langchain-core              # Core abstractions and interfaces for LangChain
+langchain-community         # Community-contributed LangChain integrations
+
+# =============================================================================
+# LANGCHAIN INTEGRATIONS BY PROVIDER
+# =============================================================================
+# OpenAI Integration
+langchain-openai            # OpenAI models integration with LangChain
+
+# Google AI Integration
+langchain-google-genai==2.0.6  # Google Gemini models integration with LangChain
+
+# Hugging Face Integration
+langchain_huggingface       # Hugging Face models integration with LangChain
+
+# Groq Integration
+langchain-groq==0.2.0      # Groq fast inference integration with LangChain
+
+# =============================================================================
+# LLM API CLIENTS
+# =============================================================================
+# Direct API clients for various LLM providers
+openai==1.57.0              # OpenAI API client for GPT models
+google-generativeai==0.8.3 # Google Generative AI API client for Gemini
+groq==0.13.0                # Groq API client for fast LLM inference
+
+# =============================================================================
+# MACHINE LEARNING & DEEP LEARNING
+# =============================================================================
+# PyTorch ecosystem for local model execution
+torch==2.7.1                # PyTorch deep learning framework
+torchvision                 # Computer vision utilities for PyTorch
+torchaudio                  # Audio processing utilities for PyTorch
+
+# Hugging Face ecosystem
+transformers==4.47.0        # Transformers library for pre-trained models
+accelerate==1.1.0           # Accelerate library for efficient training/inference
+
+# =============================================================================
+# DOCUMENT PROCESSING & PARSING
+# =============================================================================
+# PDF processing
+pypdf                       # Python PDF library for reading PDF files
+pymupdf                     # MuPDF Python binding for advanced PDF processing
+
+# Web scraping and parsing
+bs4                         # BeautifulSoup4 for HTML/XML parsing
+lxml                        # XML and HTML processing library
+
+# Scientific paper access
+arxiv                       # ArXiv API client for academic papers
+
+# Wikipedia access
+wikipedia                   # Wikipedia API wrapper for content retrieval
+
+# =============================================================================
+# VECTOR DATABASES & SIMILARITY SEARCH
+# =============================================================================
+faiss-cpu                   # Facebook AI Similarity Search (CPU version)
+
+# =============================================================================
+# UTILITY LIBRARIES
+# =============================================================================
+# Environment management
+python-dotenv               # Load environment variables from .env files
+
+# Tokenization and text processing
+tiktoken                    # OpenAI's tokenizer for counting tokens
+
+# Visualization and graph drawing
+grandalf                    # Library for drawing text graphs and charts
