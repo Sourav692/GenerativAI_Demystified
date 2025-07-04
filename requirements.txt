@@ -9,7 +9,7 @@
 # =============================================================================
 # Main LangChain framework and core components
 langchain                    # Core LangChain framework for building LLM applications
-langchain-core              # Core abstractions and interfaces for LangChain
+langchain-core==0.3.63      # Core abstractions and interfaces for LangChain
 langchain-community         # Community-contributed LangChain integrations
 
 # =============================================================================
