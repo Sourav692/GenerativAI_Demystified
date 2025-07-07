@@ -1,1 +1,0 @@
-https://courses.analyticsvidhya.com/courses/take/introduction-to-langchain-for-agentic-ai/lessons/59951893-hands-on-langchain-expression-language-lcel
