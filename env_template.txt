@@ -1,0 +1,233 @@
+# =============================================================================
+# 🔐 ENVIRONMENT VARIABLES TEMPLATE
+# =============================================================================
+# Copy this file to .env and fill in your actual API keys and settings
+# Command: cp env_template.txt .env
+#
+# IMPORTANT: Never commit your .env file to version control!
+# The .env file should be added to .gitignore
+# =============================================================================
+
+# =============================================================================
+# 🤖 LLM API KEYS
+# =============================================================================
+# Get your API keys from the respective providers:
+
+# OpenAI API Key
+# Get from: https://platform.openai.com/account/api-keys
+OPENAI_API_KEY=sk-your-openai-api-key-here
+
+# Google Generative AI API Key (for Gemini)
+# Get from: https://makersuite.google.com/app/apikey
+GOOGLE_API_KEY=your-google-api-key-here
+
+# Groq API Key (for fast inference)
+# Get from: https://console.groq.com/keys
+GROQ_API_KEY=gsk_your-groq-api-key-here
+
+# Hugging Face API Token (optional)
+# Get from: https://huggingface.co/settings/tokens
+HUGGINGFACE_API_TOKEN=hf_your-huggingface-token-here
+
+# =============================================================================
+# 📊 LANGSMITH TRACING (Optional)
+# =============================================================================
+# LangSmith is for debugging and monitoring LangChain applications
+# Get from: https://smith.langchain.com/
+
+# LangSmith API Key
+LANGCHAIN_API_KEY=ls__your-langsmith-api-key-here
+
+# Enable LangSmith tracing
+LANGCHAIN_TRACING_V2=true
+
+# LangSmith project name
+LANGCHAIN_PROJECT=GenerativeAI_Demystified
+
+# LangSmith endpoint (usually default)
+LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+
+# =============================================================================
+# 🗄️ DATABASE CONFIGURATION
+# =============================================================================
+# Database settings for your applications
+
+# SQLite database path (for local development)
+DATABASE_URL=sqlite:///./genai_database.db
+
+# PostgreSQL (for production)
+# DATABASE_URL=postgresql://username:password@localhost:5432/genai_db
+
+# =============================================================================
+# 🔧 APPLICATION SETTINGS
+# =============================================================================
+# General application configuration
+
+# Project name
+PROJECT_NAME=GenerativeAI_Demystified
+
+# Debug mode (set to false in production)
+DEBUG=true
+
+# Application environment
+ENVIRONMENT=development
+
+# Default temperature for LLM responses
+DEFAULT_TEMPERATURE=0.7
+
+# Maximum tokens for LLM responses
+MAX_TOKENS=2000
+
+# =============================================================================
+# 🌐 WEB SCRAPING & EXTERNAL APIS
+# =============================================================================
+# Configuration for web scraping and external services
+
+# User agent for web scraping
+USER_AGENT=GenerativeAI_Demystified/1.0
+
+# Request timeout in seconds
+REQUEST_TIMEOUT=30
+
+# Rate limiting (requests per minute)
+RATE_LIMIT=60
+
+# =============================================================================
+# 📁 FILE PATHS & STORAGE
+# =============================================================================
+# Paths for file storage and processing
+
+# Upload directory for documents
+UPLOAD_DIR=./uploads
+
+# Vector database storage path
+VECTOR_DB_PATH=./vector_db
+
+# Cache directory
+CACHE_DIR=./cache
+
+# Logs directory
+LOG_DIR=./logs
+
+# =============================================================================
+# 🔊 LOGGING CONFIGURATION
+# =============================================================================
+# Logging levels and configuration
+
+# Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+LOG_LEVEL=INFO
+
+# Log format
+LOG_FORMAT=%(asctime)s - %(name)s - %(levelname)s - %(message)s
+
+# Log file name
+LOG_FILE=genai_app.log
+
+# =============================================================================
+# 🚀 PERFORMANCE SETTINGS
+# =============================================================================
+# Performance and optimization settings
+
+# Number of worker threads
+NUM_WORKERS=4
+
+# Batch size for processing
+BATCH_SIZE=10
+
+# Memory limit (in MB)
+MEMORY_LIMIT=2048
+
+# Enable GPU acceleration (if available)
+USE_GPU=false
+
+# =============================================================================
+# 🔐 SECURITY SETTINGS
+# =============================================================================
+# Security configuration
+
+# Secret key for sessions (generate a secure random string)
+SECRET_KEY=your-secret-key-here-generate-a-secure-random-string
+
+# JWT secret key
+JWT_SECRET=your-jwt-secret-here
+
+# Session timeout in minutes
+SESSION_TIMEOUT=60
+
+# Enable HTTPS redirect
+FORCE_HTTPS=false
+
+# =============================================================================
+# 🌍 LOCALIZATION
+# =============================================================================
+# Localization and internationalization
+
+# Default language
+DEFAULT_LANGUAGE=en
+
+# Timezone
+TIMEZONE=UTC
+
+# Date format
+DATE_FORMAT=%Y-%m-%d
+
+# =============================================================================
+# 📧 EMAIL CONFIGURATION (Optional)
+# =============================================================================
+# Email settings for notifications
+
+# SMTP server
+SMTP_SERVER=smtp.gmail.com
+
+# SMTP port
+SMTP_PORT=587
+
+# SMTP username
+SMTP_USERNAME=your-email@gmail.com
+
+# SMTP password (use app password for Gmail)
+SMTP_PASSWORD=your-app-password
+
+# From email address
+FROM_EMAIL=your-email@gmail.com
+
+# =============================================================================
+# 🔔 NOTIFICATION SETTINGS
+# =============================================================================
+# Notification configuration
+
+# Enable email notifications
+ENABLE_EMAIL_NOTIFICATIONS=false
+
+# Enable Slack notifications
+ENABLE_SLACK_NOTIFICATIONS=false
+
+# Slack webhook URL
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
+
+# =============================================================================
+# 🧪 TESTING CONFIGURATION
+# =============================================================================
+# Configuration for testing
+
+# Test database URL
+TEST_DATABASE_URL=sqlite:///./test_database.db
+
+# Test mode
+TEST_MODE=false
+
+# Mock external API calls during testing
+MOCK_EXTERNAL_APIS=false
+
+# =============================================================================
+# 📝 NOTES
+# =============================================================================
+# Additional notes for developers:
+#
+# 1. Copy this file to .env: cp env_template.txt .env
+# 2. Fill in your actual API keys and settings
+# 3. Never commit .env to version control
+# 4. Use different .env files for different environments
+# 5. Validate your .env file after setup: python test_setup.py
+# 6. Keep this template updated when adding new environment variables
+# =============================================================================
