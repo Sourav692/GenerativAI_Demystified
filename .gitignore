@@ -177,3 +177,4 @@ my_db/
 .deepeval_telemtry.txt
 .deepeval-cache.json
 golden_ref_data.bin
+*.gz
