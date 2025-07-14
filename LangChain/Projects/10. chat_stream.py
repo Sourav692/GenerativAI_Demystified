@@ -39,7 +39,7 @@ if st.button("Start New Conversation"):
 
 for message in st.session_state.chat_history:
     with st.chat_message(message['role']):
-        st.markdown(message['role'])
+        st.markdown(message['content'])
 
 
 ### LLM Setup

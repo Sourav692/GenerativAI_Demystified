@@ -1,29 +1,34 @@
+# Youtube Streamlit Playlist
+# https://www.youtube.com/watch?v=hff2tHUzxJM&list=PLc2rvfiptPSSpZ99EnJbH5LjTJ_nOoSWW
+
 import streamlit as st
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv # langfuse or opik
+from langchain_ollama import ChatOllama
 
-from langchain_openai import ChatOpenAI
 from langchain_core.prompts import (
                                         SystemMessagePromptTemplate,
                                         HumanMessagePromptTemplate,
                                         ChatPromptTemplate,
-                                        PromptTemplate,
                                         MessagesPlaceholder
                                         )
+
 
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import SQLChatMessageHistory
 
 from langchain_core.output_parsers import StrOutputParser
 
-load_dotenv()
+load_dotenv('./../.env')
 
 
-st.title("Data and AI University Chatbot")
-st.write("Chat with me!")
+st.title("Make Your Own Chatbot")
+st.write("Chat with me! Catch me at https://youtube.com/kgptalkie")
 
+base_url = "http://localhost:11434"
+model = 'llama3.2:3b'
 
-user_id = st.text_input("Enter your user id", "Sourav")
+user_id = st.text_input("Enter your user id", "laxmikant")
 
 def get_session_history(session_id):
     return SQLChatMessageHistory(session_id, "sqlite:///chat_history.db")
@@ -39,11 +44,11 @@ if st.button("Start New Conversation"):
 
 for message in st.session_state.chat_history:
     with st.chat_message(message['role']):
-        st.markdown(message['role'])
+        st.markdown(message['content'])
 
 
 ### LLM Setup
-llm = ChatOpenAI(model_name='gpt-4o-mini', temperature=0)
+llm = ChatOllama(base_url=base_url, model=model)
 
 system = SystemMessagePromptTemplate.from_template("You are helpful assistant.")
 human = HumanMessagePromptTemplate.from_template("{input}")
@@ -55,8 +60,8 @@ prompt = ChatPromptTemplate(messages=messages)
 chain = prompt | llm | StrOutputParser()
 
 
-runnable_with_history = RunnableWithMessageHistory(chain, get_session_history,
-                                                   input_messages_key='input',
+runnable_with_history = RunnableWithMessageHistory(chain, get_session_history, 
+                                                   input_messages_key='input', 
                                                    history_messages_key='history')
 
 def chat_with_llm(session_id, input):
@@ -65,7 +70,7 @@ def chat_with_llm(session_id, input):
         yield output
 
 
-prompt = st.chat_input("What's up?")
+prompt = st.chat_input("What is up?")
 # st.write(prompt)
 
 if prompt:
